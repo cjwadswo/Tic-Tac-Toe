@@ -1,0 +1,30 @@
+body{
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.gameboard-container{
+    /* border: 1px solid black; */
+}
+.row1, .row2, .row3{
+    display: flex;
+}
+.col1 ,.col2, .col3{
+    width: 200px;
+    height:200px;
+    border: 1px solid black;
+    border-left: none;
+}
+
+.row3 .col{
+    border-bottom: none;
+}
+
+.row1 .col{
+    border-top: none;
+}
+
+.col3 {
+    border-right: none;
+}
