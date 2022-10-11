@@ -1,12 +1,6 @@
 
 //TODO: Implement gameBoard module
 const gameBoard = (() =>{
-    
-    let board = [
-        ['x', 'o', 'o'],
-        ['x', 'x', 'x'],
-        ['o', 'x', 'o']
-    ];
 
     const _initializeDomBoard = () => {
         let array = [];
@@ -19,38 +13,57 @@ const gameBoard = (() =>{
        return array;
     }
 
-    let gameBoardContainer = _initializeDomBoard();
-
-      //Display the board.
-    const display = () => {
+    const _addGameBoardEventListeners = () => {
         for(let i = 0; i < 3; i++) {
             for(let j = 0; j < 3; j++) {
-                gameBoardContainer[i][j].innerHTML = board[i][j];
+                gameBoardContainer[i][j].addEventListener('click', _updateGameBoard);
             }
         }
     };
-    display();
-    //Update the board for 'x'
-
-    //Update the board for 'o'
-
+    //Update the board for 'x' or ''o'
+    const _updateGameBoard = (e) => {
+        let space = e.target;
+        if(space.textContent == '')
+        {
+            if(turn == 'x') {
+                turn = 'o';
+                space.textContent = 'x';
+            }
+            else {
+                turn = 'x';
+                space.textContent = 'o';
+            }
+            console.log(space.className);
+        }
+    };
+    
     //Determine winner
+
+
+    //Setup
+    const start = () => {
+        _initializeDomBoard();
+        _addGameBoardEventListeners();
+        // _display();
+        
+    }
+
+    let turn = 'x';
+    let board = [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ];
+
+    let gameBoardContainer = _initializeDomBoard();
     return {
-        display,
-        gameBoardContainer
+        gameBoardContainer,
+        start
     }
 })();
-let test = gameBoard.gameBoardContainer;
-console.log(gameBoard.gameBoardContainer);
 
+const displayController = ( () => {
 
-function initializeDomGameBoard(){
-    let domBoard = [];
-    for(let i = 0; i < 3; i++) {
-        domBoard[i] = [];
-        for(let j = 0; j < 3; j++) {
-            domBoard[i][j] = document.querySelector(`.row${i} .col${j}`);
-    }
-   }
-}
-initializeDomGameBoard();
+})();
+
+gameBoard.start();
