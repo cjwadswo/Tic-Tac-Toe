@@ -2,29 +2,39 @@ body{
     padding: 10px;
     margin: 0;
     box-sizing: border-box;
+    background-color: grey;
 }
 
 .gameboard-container{
-    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
 }
-.row1, .row2, .row3{
+.row0, .row1, .row2{
     display: flex;
 }
-.col1 ,.col2, .col3{
+.col0 ,.col1, .col2{
     width: 200px;
     height:200px;
+    font-size: 10rem;
     border: 1px solid black;
     border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.row3 .col{
+.row2 .col{
     border-bottom: none;
 }
 
-.row1 .col{
+.row0 .col{
     border-top: none;
 }
 
-.col3 {
+.col2 {
     border-right: none;
 }
